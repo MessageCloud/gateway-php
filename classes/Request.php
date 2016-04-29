@@ -64,7 +64,8 @@ abstract class Request
             RequestOptions::ALLOW_REDIRECTS => true,
             RequestOptions::HEADERS => [
                 'User-agent' => 'txtNationGatewayLibraryPHP/1.0'
-            ]
+            ],
+            RequestOptions::HTTP_ERRORS => false
         ]);
 
         $objResult = new SMSMessageResult($objResponse);

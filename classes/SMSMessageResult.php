@@ -80,6 +80,8 @@ class SMSMessageResult extends Result
 
     protected $objResult;
 
+    protected $strErrorCode = self::ERROR_UNKNOWN;
+
     public function __construct(ResponseInterface $objResult)
     {
         $this->objResult = $objResult;
