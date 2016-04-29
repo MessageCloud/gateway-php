@@ -1,0 +1,34 @@
+{
+	"name": "txtnation/txtnation-gateway-php",
+	"description": "A PHP library to help you integrate the txtNation Gateway.",
+	"keywords": ["sms", "mobile", "billing", "phone", "cell", "text"],
+	"homepage": "http://www.txtnation.com",
+	"time": "2016-04-29",
+	"authors": [
+		{
+			"name":         "Marc O'Leary",
+			"email":        "marc@txtnation.com",
+			"homepage":     "http://www.txtnation.com",
+			"role":         "Software Developer"
+		}
+	],
+	"require":{
+		"php": ">=5.3.0",
+		"monolog/monolog": "^1.13",
+		"guzzlehttp/guzzle": "^6.2",
+		"shrikeh/teapot": "^2.0",
+		"respect/validation": "^1.0",
+		"ramsey/uuid": "^3.3"
+	},
+	"require-dev":{
+		"phpunit/phpunit": "~4.0"
+	},
+	"autoload":{
+		"psr-4":{
+			"txtNation\\Gateway\\": "classes/"
+		}
+	},
+	"scripts":{
+		"test": "vendor/phpunit/phpunit/phpunit tests/"
+	}
+}
