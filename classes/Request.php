@@ -8,6 +8,7 @@ use GuzzleHttp\Client;
 use GuzzleHttp\RequestOptions;
 use Ramsey\Uuid\Uuid;
 use Ramsey\Uuid\Exception\UnsatisfiedDependencyException;
+use txtNation\Gateway\Exceptions\SMSMessageException;
 
 abstract class Request
 {

@@ -3,7 +3,7 @@
 namespace txtNation\Gateway;
 
 use Monolog\Logger;
-use Gateway\Exceptions\SMSMessageException;
+use txtNation\Gateway\Exceptions\SMSMessageException;
 use Respect\Validation\Validator;
 
 class SMSMessage extends Request

@@ -2,7 +2,7 @@
 
 require_once 'vendor/autoload.php';
 
-use Gateway\SMSMessage;
+use txtNation\Gateway\SMSMessage;
 
 class SMSMessageTest extends \PHPUnit_Framework_TestCase
 {
@@ -18,7 +18,7 @@ class SMSMessageTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider providerForBadMsisdn
-     * @expectedException Gateway\Exceptions\SMSMessageException
+     * @expectedException txtNation\Gateway\Exceptions\SMSMessageException
      */
     public function testBadMsisdnThrowsException($input)
     {
@@ -30,7 +30,7 @@ class SMSMessageTest extends \PHPUnit_Framework_TestCase
      */
     public function testValidMsisdnReturnsSMSMessageObject($input)
     {
-        $this->assertInstanceOf('Gateway\SMSMessage', $this->objMessage->msisdn($input));
+        $this->assertInstanceOf('txtNation\Gateway\SMSMessage', $this->objMessage->msisdn($input));
     }
 
     public function providerForValidMsisdn()
@@ -46,7 +46,6 @@ class SMSMessageTest extends \PHPUnit_Framework_TestCase
     {
         return [
             [''],
-            [447528748500],
             ['44752874850a'],
             ['07528748500'],
             ['444752874850000'],
@@ -58,7 +57,7 @@ class SMSMessageTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider providerForBadId
-     * @expectedException Gateway\Exceptions\SMSMessageException
+     * @expectedException txtNation\Gateway\Exceptions\SMSMessageException
      */
     public function testBadIdThrowsException($input)
     {
@@ -70,7 +69,7 @@ class SMSMessageTest extends \PHPUnit_Framework_TestCase
      */
     public function testValidIdReturnsSMSMessageObject($input)
     {
-        $this->assertInstanceOf('Gateway\SMSMessage', $this->objMessage->id($input));
+        $this->assertInstanceOf('txtNation\Gateway\SMSMessage', $this->objMessage->id($input));
     }
 
     public function providerForValidId()
@@ -95,7 +94,7 @@ class SMSMessageTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider providerForBadBody
-     * @expectedException Gateway\Exceptions\SMSMessageException
+     * @expectedException txtNation\Gateway\Exceptions\SMSMessageException
      */
     public function testBadBodyThrowsException($input)
     {
@@ -107,7 +106,7 @@ class SMSMessageTest extends \PHPUnit_Framework_TestCase
      */
     public function testValidBodyReturnsSMSMessageObject($input)
     {
-        $this->assertInstanceOf('Gateway\SMSMessage', $this->objMessage->body($input));
+        $this->assertInstanceOf('txtNation\Gateway\SMSMessage', $this->objMessage->body($input));
     }
 
     public function providerForValidBody()
@@ -129,7 +128,7 @@ class SMSMessageTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider providerForBadSenderId
-     * @expectedException Gateway\Exceptions\SMSMessageException
+     * @expectedException txtNation\Gateway\Exceptions\SMSMessageException
      */
     public function testBadSenderIdThrowsException($input)
     {
@@ -141,7 +140,7 @@ class SMSMessageTest extends \PHPUnit_Framework_TestCase
      */
     public function testValidSenderIdReturnsSMSMessageObject($input)
     {
-        $this->assertInstanceOf('Gateway\SMSMessage', $this->objMessage->senderId($input));
+        $this->assertInstanceOf('txtNation\Gateway\SMSMessage', $this->objMessage->senderId($input));
     }
 
     public function providerForValidSenderId()
@@ -167,7 +166,7 @@ class SMSMessageTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider providerForBadValue
-     * @expectedException Gateway\Exceptions\SMSMessageException
+     * @expectedException txtNation\Gateway\Exceptions\SMSMessageException
      */
     public function testBadValueThrowsException($input)
     {
@@ -179,7 +178,7 @@ class SMSMessageTest extends \PHPUnit_Framework_TestCase
      */
     public function testValidValueReturnsSMSMessageObject($input)
     {
-        $this->assertInstanceOf('Gateway\SMSMessage', $this->objMessage->value($input));
+        $this->assertInstanceOf('txtNation\Gateway\SMSMessage', $this->objMessage->value($input));
     }
 
     public function providerForValidValue()
@@ -205,7 +204,7 @@ class SMSMessageTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException Gateway\Exceptions\SMSMessageException
+     * @expectedException txtNation\Gateway\Exceptions\SMSMessageException
      */
     public function testNetworkTooLong()
     {
@@ -214,11 +213,11 @@ class SMSMessageTest extends \PHPUnit_Framework_TestCase
 
     public function testNetworkReturnsSMSMessageObject()
     {
-        $this->assertInstanceOf('Gateway\SMSMessage', $this->objMessage->network('international'));
+        $this->assertInstanceOf('txtNation\Gateway\SMSMessage', $this->objMessage->network('international'));
     }
 
     /**
-     * @expectedException Gateway\Exceptions\SMSMessageException
+     * @expectedException txtNation\Gateway\Exceptions\SMSMessageException
      */
     public function testInternationalMessageHasValue()
     {

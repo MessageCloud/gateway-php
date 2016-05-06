@@ -1,6 +1,6 @@
 <?php
 
-namespace Gateway\Exceptions;
+namespace txtNation\Gateway\Exceptions;
 
 class SMSMessageException extends \Exception
 {
