@@ -4,7 +4,7 @@ The txtNation Gateway PHP Library works with PHP 5.3+. It is also compatible wit
 
 ## Documentation
 
-If you'd rather build on top of the Gateway API from scratch, further documentation can be found on the [txtNation Wiki](http://wiki.txtnation.com/).
+If you would rather build on top of the Gateway API from scratch, further documentation can be found on the [txtNation Wiki](http://wiki.txtnation.com/).
 
 ## Prerequisites
 
