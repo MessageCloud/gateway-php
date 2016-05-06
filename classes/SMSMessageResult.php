@@ -9,6 +9,8 @@ class SMSMessageResult extends Result
     // the response to expect when everything went well
     protected $strSuccess = 'SUCCESS';
 
+    protected $strId;
+
     // a few error codes
     const ERROR_NO_CREDITS = 'NO CREDITS';
     const ERROR_IR_101 = 'IR-101';
