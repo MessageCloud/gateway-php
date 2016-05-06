@@ -153,7 +153,7 @@ class SMSMessage extends Request
 
     public function reply($blReply)
     {
-        if (!(Validator::boolean()->validate($blReply))) {
+        if (!(Validator::boolType()->validate($blReply))) {
             $this->objLogger->addError('Reply must be TRUE or FALSE');
 
             throw new SMSMessageException('Reply must be TRUE or FALSE');
@@ -183,7 +183,7 @@ class SMSMessage extends Request
 
     public function binary($blBinary)
     {
-        if (!(Validator::boolean()->validate($blBinary))) {
+        if (!(Validator::boolType()->validate($blBinary))) {
             $this->objLogger->addError('Binary must be TRUE or FALSE');
 
             throw new SMSMessageException('Binary must be TRUE or FALSE');
