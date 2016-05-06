@@ -70,6 +70,7 @@ abstract class Request
         ]);
 
         $objResult = new SMSMessageResult($objResponse);
+        $objResult->setCallbackId($this->strId);
 
         if (!$objResult->success()) {
             $this->objLogger->addAlert('Message was not sent. ', ['error' => $objResult->getErrorMessage()]);

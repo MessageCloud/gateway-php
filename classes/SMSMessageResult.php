@@ -89,6 +89,11 @@ class SMSMessageResult extends Result
         $this->objResult = $objResult;
     }
 
+    public function setCallbackId($strId)
+    {
+        return ($this->strId = $strId);
+    }
+
     public function getCallbackId()
     {
         return $this->strId;
