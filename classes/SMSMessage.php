@@ -13,6 +13,7 @@ class SMSMessage extends Request
     const DEFAULT_FREE_NETWORK = 'INTERNATIONAL';
     const DEFAULT_CURRENCY = 'GBP';
     const DEFAULT_VALUE = 0.00;
+    const DEFAULT_REPLY = false;
 
     protected $strUsername = null;
     protected $strPassword = null;
@@ -176,7 +177,8 @@ class SMSMessage extends Request
 
         $this->strUdh = $strUdh;
 
-        $this->objLogger->addDebug('UDH has been set to ' . $strNetwork);
+        $this->objLogger->addDebug('UDH has been set to ' . $strUdh);
+
 
         return $this;
     }
@@ -232,6 +234,12 @@ class SMSMessage extends Request
             $this->objLogger->addDebug('Automatically setting the message value to ' . self::DEFAULT_VALUE);
 
             $this->fltValue = self::DEFAULT_VALUE;
+        }
+
+        if (is_null($this->blIsReply)) {
+            $this->objLogger->addDebug('Automatically setting the reply value to ' . self::DEFAULT_REPLY);
+
+            $this->blIsReply = self::DEFAULT_REPLY;
         }
 
         if ((strtoupper(self::DEFAULT_FREE_NETWORK) === strtoupper($this->strNetwork)) && (0.00 < $this->fltValue)) {

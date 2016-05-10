@@ -45,7 +45,8 @@ abstract class Request
             'currency' => $this->strCurrency,
             'encoding' => $this->strEncoding,
             'number' => $this->strMsisdn,
-            'id' => $this->strId
+            'id' => $this->strId,
+            'reply' => $this->blIsReply
         ];
 
         if ($this->blBinary) {
