@@ -46,7 +46,7 @@ abstract class Request
             'encoding' => $this->strEncoding,
             'number' => $this->strMsisdn,
             'id' => $this->strId,
-            'reply' => $this->blIsReply
+            'reply' => $this->intReply
         ];
 
         if ($this->blBinary) {

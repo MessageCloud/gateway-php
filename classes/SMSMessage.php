@@ -24,7 +24,7 @@ class SMSMessage extends Request
     protected $strNetwork = null;
     protected $fltValue = null;
     protected $strCurrency = null;
-    protected $blIsReply = null;
+    protected $intReply = null;
     protected $strEncoding = null;
     protected $blBinary = null;
     protected $strUdh = null;
@@ -152,17 +152,17 @@ class SMSMessage extends Request
         return $this;
     }
 
-    public function reply($blReply)
+    public function reply($intReply)
     {
-        if (!(Validator::boolType()->validate($blReply))) {
+        if (!(Validator::boolType()->validate($intReply))) {
             $this->objLogger->addError('Reply must be TRUE or FALSE');
 
             throw new SMSMessageException('Reply must be TRUE or FALSE');
         }
 
-        $this->blReply = (bool) $blReply;
+        $this->intReply = (int) $intReply;
 
-        $this->objLogger->addDebug('Reply has been set to ' . $blReply);
+        $this->objLogger->addDebug('Reply has been set to ' . $intReply);
 
         return $this;
     }
@@ -236,10 +236,10 @@ class SMSMessage extends Request
             $this->fltValue = self::DEFAULT_VALUE;
         }
 
-        if (is_null($this->blIsReply)) {
+        if (is_null($this->intReply)) {
             $this->objLogger->addDebug('Automatically setting the reply value to ' . self::DEFAULT_REPLY);
 
-            $this->blIsReply = self::DEFAULT_REPLY;
+            $this->intReply = self::DEFAULT_REPLY;
         }
 
         if ((strtoupper(self::DEFAULT_FREE_NETWORK) === strtoupper($this->strNetwork)) && (0.00 < $this->fltValue)) {
