@@ -13,7 +13,7 @@ class SMSMessage extends Request
     const DEFAULT_FREE_NETWORK = 'INTERNATIONAL';
     const DEFAULT_CURRENCY = 'GBP';
     const DEFAULT_VALUE = 0.00;
-    const DEFAULT_REPLY = false;
+    const DEFAULT_REPLY = 0;
 
     protected $strUsername = null;
     protected $strPassword = null;
@@ -42,7 +42,9 @@ class SMSMessage extends Request
 
         $this->objLogger = new Logger(__CLASS__);
 
-        if ($this->arrOptions[self::LOGGING]) $this->startLogging();
+        if ($this->arrOptions[self::LOGGING]) {
+            $this->startLogging();
+        }
 
         $this->objLogger->addDebug('Message object constructed');
     }
@@ -94,7 +96,7 @@ class SMSMessage extends Request
 
     public function senderId($strSenderId)
     {
-        if (!(Validator::stringType()->notEmpty()->length(1,12)->validate($strSenderId))) {
+        if (!(Validator::stringType()->notEmpty()->length(1, 12)->validate($strSenderId))) {
             $this->objLogger->addError('SenderId must be a string between 1 and 12 characters long');
 
             throw new SMSMessageException('SenderId must be a string between 1 and 12 characters long');
@@ -109,7 +111,7 @@ class SMSMessage extends Request
 
     public function network($strNetwork)
     {
-        if (!(Validator::stringType()->notEmpty()->length(1,50)->validate($strNetwork))) {
+        if (!(Validator::stringType()->notEmpty()->length(1, 50)->validate($strNetwork))) {
             $this->objLogger->addError('Network must be a string');
 
             throw new SMSMessageException('Network must be a string');
@@ -154,10 +156,10 @@ class SMSMessage extends Request
 
     public function reply($intReply)
     {
-        if (!(Validator::boolType()->validate($intReply))) {
-            $this->objLogger->addError('Reply must be TRUE or FALSE');
+        if (!(Validator::IntType()->between(0, 1)->validate($intReply))) {
+            $this->objLogger->addError('Reply must be 1 or 0');
 
-            throw new SMSMessageException('Reply must be TRUE or FALSE');
+            throw new SMSMessageException('Reply must be 1 or 0');
         }
 
         $this->intReply = (int) $intReply;
@@ -169,7 +171,7 @@ class SMSMessage extends Request
 
     public function udh($strUdh)
     {
-        if (!(Validator::stringType()->notEmpty()->length(1,255)->validate($strUdh))) {
+        if (!(Validator::stringType()->notEmpty()->length(1, 255)->validate($strUdh))) {
             $this->objLogger->addError('UDH must be a string');
 
             throw new SMSMessageException('UDH must be a string');
