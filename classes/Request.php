@@ -28,7 +28,9 @@ abstract class Request
 
     public function send()
     {
-        if (!$this->validate()) throw new SMSMessageException('Could not send message');
+        if (!$this->validate()) {
+            throw new SMSMessageException('Could not send message');
+        }
 
         if (empty($this->strId)) {
             $objUuid = Uuid::uuid4();
@@ -45,7 +47,8 @@ abstract class Request
             'currency' => $this->strCurrency,
             'encoding' => $this->strEncoding,
             'number' => $this->strMsisdn,
-            'id' => $this->strId
+            'id' => $this->strId,
+            'reply' => $this->intReply
         ];
 
         if ($this->blBinary) {
@@ -53,7 +56,7 @@ abstract class Request
             $arrParams['udh'] = $this->strUdh;
         }
 
-        $this->objLogger->addDebug('Sending the follwoing to txtNation:', $arrParams);
+        $this->objLogger->addDebug('Sending the following to txtNation:', $arrParams);
 
         $objClient = new Client([
             'base_uri' => 'http://client.txtnation.com/', 'timeout'  => 10.0,

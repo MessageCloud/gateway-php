@@ -13,6 +13,7 @@ class SMSMessage extends Request
     const DEFAULT_FREE_NETWORK = 'INTERNATIONAL';
     const DEFAULT_CURRENCY = 'GBP';
     const DEFAULT_VALUE = 0.00;
+    const DEFAULT_REPLY = 0;
 
     protected $strUsername = null;
     protected $strPassword = null;
@@ -23,7 +24,7 @@ class SMSMessage extends Request
     protected $strNetwork = null;
     protected $fltValue = null;
     protected $strCurrency = null;
-    protected $blIsReply = null;
+    protected $intReply = null;
     protected $strEncoding = null;
     protected $blBinary = null;
     protected $strUdh = null;
@@ -41,7 +42,9 @@ class SMSMessage extends Request
 
         $this->objLogger = new Logger(__CLASS__);
 
-        if ($this->arrOptions[self::LOGGING]) $this->startLogging();
+        if ($this->arrOptions[self::LOGGING]) {
+            $this->startLogging();
+        }
 
         $this->objLogger->addDebug('Message object constructed');
     }
@@ -93,7 +96,7 @@ class SMSMessage extends Request
 
     public function senderId($strSenderId)
     {
-        if (!(Validator::stringType()->notEmpty()->length(1,12)->validate($strSenderId))) {
+        if (!(Validator::stringType()->notEmpty()->length(1, 12)->validate($strSenderId))) {
             $this->objLogger->addError('SenderId must be a string between 1 and 12 characters long');
 
             throw new SMSMessageException('SenderId must be a string between 1 and 12 characters long');
@@ -108,7 +111,7 @@ class SMSMessage extends Request
 
     public function network($strNetwork)
     {
-        if (!(Validator::stringType()->notEmpty()->length(1,50)->validate($strNetwork))) {
+        if (!(Validator::stringType()->notEmpty()->length(1, 50)->validate($strNetwork))) {
             $this->objLogger->addError('Network must be a string');
 
             throw new SMSMessageException('Network must be a string');
@@ -151,24 +154,24 @@ class SMSMessage extends Request
         return $this;
     }
 
-    public function reply($blReply)
+    public function reply($intReply)
     {
-        if (!(Validator::boolType()->validate($blReply))) {
-            $this->objLogger->addError('Reply must be TRUE or FALSE');
+        if (!(Validator::IntType()->between(0, 1)->validate($intReply))) {
+            $this->objLogger->addError('Reply must be 1 or 0');
 
-            throw new SMSMessageException('Reply must be TRUE or FALSE');
+            throw new SMSMessageException('Reply must be 1 or 0');
         }
 
-        $this->blReply = (bool) $blReply;
+        $this->intReply = (int) $intReply;
 
-        $this->objLogger->addDebug('Reply has been set to ' . $blReply);
+        $this->objLogger->addDebug('Reply has been set to ' . $intReply);
 
         return $this;
     }
 
     public function udh($strUdh)
     {
-        if (!(Validator::stringType()->notEmpty()->length(1,255)->validate($strUdh))) {
+        if (!(Validator::stringType()->notEmpty()->length(1, 255)->validate($strUdh))) {
             $this->objLogger->addError('UDH must be a string');
 
             throw new SMSMessageException('UDH must be a string');
@@ -176,7 +179,8 @@ class SMSMessage extends Request
 
         $this->strUdh = $strUdh;
 
-        $this->objLogger->addDebug('UDH has been set to ' . $strNetwork);
+        $this->objLogger->addDebug('UDH has been set to ' . $strUdh);
+
 
         return $this;
     }
@@ -232,6 +236,12 @@ class SMSMessage extends Request
             $this->objLogger->addDebug('Automatically setting the message value to ' . self::DEFAULT_VALUE);
 
             $this->fltValue = self::DEFAULT_VALUE;
+        }
+
+        if (is_null($this->intReply)) {
+            $this->objLogger->addDebug('Automatically setting the reply value to ' . self::DEFAULT_REPLY);
+
+            $this->intReply = self::DEFAULT_REPLY;
         }
 
         if ((strtoupper(self::DEFAULT_FREE_NETWORK) === strtoupper($this->strNetwork)) && (0.00 < $this->fltValue)) {
