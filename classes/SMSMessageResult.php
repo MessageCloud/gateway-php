@@ -13,6 +13,8 @@ class SMSMessageResult extends Result
 
     // a few error codes
     const ERROR_NO_CREDITS = 'NO CREDITS';
+    const ERROR_BARRED = 'BARRED';
+
     const ERROR_IR_101 = 'IR-101';
     const ERROR_IR_102 = 'IR-102';
     const ERROR_IR_103 = 'IR-103';
@@ -49,6 +51,7 @@ class SMSMessageResult extends Result
     // how the error codes translate into real person speak
     protected $arrErrorMessages = [
         self::ERROR_NO_CREDITS => 'No credits remaining. Visit https://clients.txtnation.com/ and request more credits.',
+        self::ERROR_BARRED => 'The end user has previously sent in a STOP request preventing any further messages.',
 
         self::ERROR_IR_101 => 'Duplicate post. You have already replied to a message this ID. In most cases you can only reply to a message once.',
         self::ERROR_IR_102 => 'Missing details. A binary transaction has been requested, but the UDH has not been specified. You should set this with the SMSMessage::udh() method.',
@@ -103,7 +106,7 @@ class SMSMessageResult extends Result
     {
         $arrMatches = [];
 
-        if (preg_match('/((IR|E)\-\d{3})|(NO CREDITS)/', (string) $this->objResult->getBody(), $arrMatches)) {
+        if (preg_match('/((IR|E)\-\d{3})|(NO CREDITS)|(BARRED)/', (string) $this->objResult->getBody(), $arrMatches)) {
             $this->strErrorCode = $arrMatches[0];
         }
 
