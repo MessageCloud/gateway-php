@@ -56,6 +56,10 @@ abstract class Request
             $arrParams['udh'] = $this->strUdh;
         }
 
+        if ($this->intCategory) {
+            $arrParams['smscat'] = $this->intCategory;
+        }
+
         $this->objLogger->addDebug('Sending the following to txtNation:', $arrParams);
 
         $objClient = new Client([

@@ -25,6 +25,7 @@ class SMSMessage extends Request
     protected $fltValue = null;
     protected $strCurrency = null;
     protected $intReply = null;
+    protected $intCategory = null;
     protected $strEncoding = null;
     protected $blBinary = null;
     protected $strUdh = null;
@@ -196,6 +197,21 @@ class SMSMessage extends Request
         $this->blBinary = (bool) $blBinary;
 
         $this->objLogger->addDebug('Binary has been set to ' . $blBinary);
+
+        return $this;
+    }
+
+    public function category($intCategory)
+    {
+        if (!(Validator::numeric()->notEmpty()->length(3)->validate($intCategory))) {
+            $this->objLogger->addError('Category must be a numeric string with a length of 3.');
+
+            throw new SMSMessageException('Category must be a numeric string with a length of 3.');
+        }
+
+        $this->intCategory = $intCategory;
+
+        $this->objLogger->addDebug('Category has been set to ' . $intCategory);
 
         return $this;
     }
