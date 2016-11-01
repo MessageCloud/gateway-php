@@ -203,7 +203,7 @@ class SMSMessage extends Request
 
     public function category($intCategory)
     {
-        if (!(Validator::numeric()->notEmpty()->length(3)->validate($intCategory))) {
+        if (!(Validator::numeric()->notEmpty()->length(3, 3)->validate($intCategory))) {
             $this->objLogger->addError('Category must be a numeric string with a length of 3.');
 
             throw new SMSMessageException('Category must be a numeric string with a length of 3.');
