@@ -22,10 +22,8 @@ The following README assumes that you are using the following PHP extensions:
 Using [Composer](https://getcomposer.org/) you can easily download and build the app:
 
 ```bash
-$ composer require txtnation/txtnation-gateway-php:dev-master
+$ composer require txtnation/txtnation-gateway-php
 ```
-
-If you are using this code in production you should use the `--no-dev` flag to prevent development-only packages being downloaded and installed.
 
 ### Importing the Library
 
