@@ -1,6 +1,6 @@
 # txtNation Gateway PHP Library
 
-The txtNation Gateway PHP Library works with PHP 5.3+. It is also compatible with PHP 7.
+The txtNation Gateway PHP Library works with PHP 5.4+. It is also compatible with PHP 7.
 
 ## Documentation
 
