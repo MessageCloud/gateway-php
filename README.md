@@ -72,3 +72,9 @@ You can test the library by using the following command (dev only):
 ```bash
 $ composer test
 ```
+
+If you are getting a permissions error with your composer test do:
+```bash
+$ sudo composer test
+```
+
