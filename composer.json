@@ -1,5 +1,5 @@
 {
-	"name": "txtnation/txtnation-gateway-php",
+	"name": "messagecloud/gateway",
 	"description": "A PHP library to help you integrate the txtNation Gateway.",
 	"keywords": ["sms", "mobile", "billing", "phone", "cell", "text"],
 	"homepage": "http://www.txtnation.com",
