@@ -1,14 +1,19 @@
 {
 	"name": "messagecloud/gateway",
-	"description": "A PHP library to help you integrate the txtNation Gateway.",
+	"description": "A PHP library to help you integrate the MessageCloud Gateway.",
 	"keywords": ["sms", "mobile", "billing", "phone", "cell", "text"],
-	"homepage": "http://www.txtnation.com",
+	"homepage": "http://www.messagecloud.com",
 	"time": "2016-04-29",
 	"authors": [
 		{
 			"name":         "Marc O'Leary",
-			"email":        "marc@txtnation.com",
-			"homepage":     "http://www.txtnation.com",
+			"email":        "marc@messagecloud.com",
+			"homepage":     "http://www.messagecloud.com",
+			"role":         "Software Developer"
+		},
+		{
+			"name":         "Ethan Bray",
+			"email":        "ethan@messagecloud.com",
 			"role":         "Software Developer"
 		}
 	],
@@ -27,7 +32,7 @@
 	},
 	"autoload":{
 		"psr-4":{
-			"txtNation\\Gateway\\": "classes/"
+			"MessageCloud\\Gateway\\": "classes/"
 		}
 	},
 	"scripts":{

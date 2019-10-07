@@ -1,6 +1,6 @@
 <?php
 
-namespace txtNation\Gateway;
+namespace MessageCloud\Gateway;
 
 use Psr\Http\Message\ResponseInterface;
 
@@ -45,7 +45,7 @@ class SMSMessageResult extends Result
     const ERROR_E_108 = 'E-108';
     const ERROR_E_109 = 'E-109';
 
-    const ERROR_UNKNOWN = 'Unrecognised error code returned. Please contact txtNation Support at https://clients.txtnation.com/ for more assistance.';
+    const ERROR_UNKNOWN = 'Unrecognised error code returned. Please contact MessageCloud Support at https://clients.txtnation.com/ for more assistance.';
 
 
     // how the error codes translate into real person speak
@@ -55,7 +55,7 @@ class SMSMessageResult extends Result
 
         self::ERROR_IR_101 => 'Duplicate post. You have already replied to a message this ID. In most cases you can only reply to a message once.',
         self::ERROR_IR_102 => 'Missing details. A binary transaction has been requested, but the UDH has not been specified. You should set this with the SMSMessage::udh() method.',
-        self::ERROR_IR_103 => 'Invalid username or password. If you are new to txtNation, you should create an account at https://my.txtnation.com/register. The username and password values are case sensitive.',
+        self::ERROR_IR_103 => 'Invalid username or password. If you are new to MessageCloud, you should create an account at https://my.messagecloud.com/register. The username and password values are case sensitive.',
         self::ERROR_IR_104 => 'Invalid details. Unable to find inbound record. Please check the provided SmsMessage::id() and SMSMessage::network() match the values we posted to you during the initial request.',
 
         self::ERROR_IR_401 => 'The SMSMessage::reply() value is not being correctly evaluated. Please ensure you are sending it correctly.',
@@ -73,14 +73,14 @@ class SMSMessageResult extends Result
         self::ERROR_IR_419 => 'You cannot send a billed message via a bulk/free SMSMessage::network().',
         self::ERROR_IR_420 => 'The SMSMessage::network() value was invalid. The network to which you are attempting to send was not recognised.',
 
-        self::ERROR_E_100 => 'Please contact txtNation Support at https://clients.txtnation.com/ for more assistance.',
+        self::ERROR_E_100 => 'Please contact MessageCloud Support at https://clients.txtnation.com/ for more assistance.',
         self::ERROR_E_101 => 'Operator Error.',
         self::ERROR_E_102 => 'Tariff Error. Please check the credit value that you\'ve set.',
         self::ERROR_E_103 => 'Invalid Data. Please check your values and variables.',
         self::ERROR_E_105 => 'Invalid Operator ID.',
         self::ERROR_E_107 => 'Invalid Test. Please review your settings.',
         self::ERROR_E_108 => 'Sending failed as you have no credits remaining on your account.',
-        self::ERROR_E_109 => 'Sending through your account via txtNation is currently disabled in this country.'
+        self::ERROR_E_109 => 'Sending through your account via MessageCloud is currently disabled in this country.'
     ];
 
     protected $objResult;

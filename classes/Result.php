@@ -1,6 +1,6 @@
 <?php
 
-namespace txtNation\Gateway;
+namespace MessageCloud\Gateway;
 
 use Teapot\StatusCode;
 

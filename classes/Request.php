@@ -1,6 +1,6 @@
 <?php
 
-namespace txtNation\Gateway;
+namespace MessageCloud\Gateway;
 
 use Monolog\Logger;
 use Monolog\Handler\RotatingFileHandler;
@@ -8,7 +8,7 @@ use GuzzleHttp\Client;
 use GuzzleHttp\RequestOptions;
 use Ramsey\Uuid\Uuid;
 use Ramsey\Uuid\Exception\UnsatisfiedDependencyException;
-use txtNation\Gateway\Exceptions\SMSMessageException;
+use MessageCloud\Gateway\Exceptions\SMSMessageException;
 
 abstract class Request
 {
@@ -60,7 +60,7 @@ abstract class Request
             $arrParams['smscat'] = $this->intCategory;
         }
 
-        $this->objLogger->addDebug('Sending the following to txtNation:', $arrParams);
+        $this->objLogger->addDebug('Sending the following to MessageCloud:', $arrParams);
 
         $objClient = new Client([
             'base_uri' => 'http://client.txtnation.com/', 'timeout'  => 10.0,
@@ -71,7 +71,7 @@ abstract class Request
             RequestOptions::SYNCHRONOUS => true,
             RequestOptions::ALLOW_REDIRECTS => true,
             RequestOptions::HEADERS => [
-                'User-agent' => 'txtNationGatewayLibraryPHP/1.0'
+                'User-agent' => 'MessageCloudGatewayLibraryPHP/1.0'
             ],
             RequestOptions::HTTP_ERRORS => false
         ]);
