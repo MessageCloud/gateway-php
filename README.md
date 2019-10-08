@@ -22,7 +22,7 @@ The following README assumes that you are using the following PHP extensions:
 Using [Composer](https://getcomposer.org/) you can easily download and build the app:
 
 ```bash
-$ composer require messagecloud/gateway
+$ composer require messagecloud/gateway-php
 ```
 
 ### Importing the Library
