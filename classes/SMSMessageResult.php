@@ -45,12 +45,12 @@ class SMSMessageResult extends Result
     const ERROR_E_108 = 'E-108';
     const ERROR_E_109 = 'E-109';
 
-    const ERROR_UNKNOWN = 'Unrecognised error code returned. Please contact MessageCloud Support at https://clients.txtnation.com/ for more assistance.';
+    const ERROR_UNKNOWN = 'Unrecognised error code returned. Please contact MessageCloud Support at help@messagecloud.com for more assistance.';
 
 
     // how the error codes translate into real person speak
     protected $arrErrorMessages = [
-        self::ERROR_NO_CREDITS => 'No credits remaining. Visit https://clients.txtnation.com/ and request more credits.',
+        self::ERROR_NO_CREDITS => 'No credits remaining. Contact help@messagecloud.com and request more credits.',
         self::ERROR_BARRED => 'The end user has previously sent in a STOP request preventing any further messages.',
 
         self::ERROR_IR_101 => 'Duplicate post. You have already replied to a message this ID. In most cases you can only reply to a message once.',
@@ -73,7 +73,7 @@ class SMSMessageResult extends Result
         self::ERROR_IR_419 => 'You cannot send a billed message via a bulk/free SMSMessage::network().',
         self::ERROR_IR_420 => 'The SMSMessage::network() value was invalid. The network to which you are attempting to send was not recognised.',
 
-        self::ERROR_E_100 => 'Please contact MessageCloud Support at https://clients.txtnation.com/ for more assistance.',
+        self::ERROR_E_100 => 'Please contact MessageCloud Support at help@messagecloud.com for more assistance.',
         self::ERROR_E_101 => 'Operator Error.',
         self::ERROR_E_102 => 'Tariff Error. Please check the credit value that you\'ve set.',
         self::ERROR_E_103 => 'Invalid Data. Please check your values and variables.',
