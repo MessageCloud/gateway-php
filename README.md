@@ -1,10 +1,10 @@
-# txtNation Gateway PHP Library
+# MessageCloud Gateway PHP Library
 
-The txtNation Gateway PHP Library works with PHP 5.4+. It is also compatible with PHP 7.
+The MessageCloud Gateway PHP Library works with PHP 5.4+. It is also compatible with PHP 7.
 
 ## Documentation
 
-If you would rather build on top of the Gateway API from scratch, further documentation can be found in the [txtNation Gateway docs](https://docs.messagecloud.com/article/114-gateway).
+If you would rather build on top of the Gateway API from scratch, further documentation can be found in the [MessageCloud Gateway docs](https://docs.messagecloud.com/article/114-gateway).
 
 ## Prerequisites
 
@@ -22,7 +22,7 @@ The following README assumes that you are using the following PHP extensions:
 Using [Composer](https://getcomposer.org/) you can easily download and build the app:
 
 ```bash
-$ composer require txtnation/txtnation-gateway-php
+$ composer require messagecloud/gateway
 ```
 
 ### Importing the Library
@@ -37,7 +37,7 @@ To test that the library is working correctly you can run the following:
 
 ```php
 $objMessage = new SMSMessage(YOUR_COMPANY_NAME_HERE, YOUR_EKEY_HERE);
-$objResult = $objMessage->msisdn('447528748500')->body('Hello, world!')->senderId('txtNation')->send();
+$objResult = $objMessage->msisdn('447528748500')->body('Hello, world!')->senderId('MessageCloud')->send();
 
 if ($objResult->success()) {
     echo $objResult->getCallbackId();
@@ -58,7 +58,7 @@ The callback ID can be used when receiving the delivery reports for your request
 You can also include the following line underneath your `require_once()` function as a shortcut to the SMSMessage object:
 
 ```php
-use txtNation\Gateway\SMSMessage as SMSMessage;
+use MessageCloud\Gateway\SMSMessage as SMSMessage;
 ```
 
 ## Using the Library

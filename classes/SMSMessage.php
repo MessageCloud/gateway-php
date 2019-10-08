@@ -1,9 +1,9 @@
 <?php
 
-namespace txtNation\Gateway;
+namespace MessageCloud\Gateway;
 
 use Monolog\Logger;
-use txtNation\Gateway\Exceptions\SMSMessageException;
+use MessageCloud\Gateway\Exceptions\SMSMessageException;
 use Respect\Validation\Validator;
 
 class SMSMessage extends Request
