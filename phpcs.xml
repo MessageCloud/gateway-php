@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<ruleset name="MessageCloud Coding Standard">
+    <rule ref="./vendor/messagecloud/messagecloud-coding-standard/ruleset.xml"/>
+
+    <file>./classes/</file>
+    <file>./tests/</file>
+</ruleset>

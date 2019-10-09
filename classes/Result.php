@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace MessageCloud\Gateway;
 
 use Teapot\StatusCode;
@@ -10,10 +12,11 @@ abstract class Result
 
     public function success()
     {
-        return ((StatusCode::OK === $this->objResult->getStatusCode()) && ($this->strSuccess === (string) $this->objResult->getBody()));
+        return ((StatusCode::OK === $this->objResult->getStatusCode())
+            && ($this->strSuccess === (string) $this->objResult->getBody()));
     }
 
-    abstract function getErrorCode();
+    abstract public function getErrorCode();
 
-    abstract function getErrorMessage();
+    abstract public function getErrorMessage();
 }

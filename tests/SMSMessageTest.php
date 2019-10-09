@@ -1,14 +1,20 @@
 <?php
 
-require_once 'vendor/autoload.php';
+declare(strict_types=1);
+
+namespace MessageCloudTest\Gateway;
 
 use MessageCloud\Gateway\SMSMessage;
+use PHPUnit_Framework_TestCase;
+use stdClass;
 
-class SMSMessageTest extends \PHPUnit_Framework_TestCase
+class SMSMessageTest extends PHPUnit_Framework_TestCase
 {
+    private $objMessage;
+
     public function setUp()
     {
-        $this->objMessage = new SMSMessage('Marc','test');
+        $this->objMessage = new SMSMessage('Marc', 'test');
     }
 
     public function tearDown()
@@ -30,7 +36,7 @@ class SMSMessageTest extends \PHPUnit_Framework_TestCase
      */
     public function testValidMsisdnReturnsSMSMessageObject($input)
     {
-        $this->assertInstanceOf('MessageCloud\Gateway\SMSMessage', $this->objMessage->msisdn($input));
+        $this->assertInstanceOf(SMSMessage::class, $this->objMessage->msisdn($input));
     }
 
     public function providerForValidMsisdn()
@@ -38,7 +44,7 @@ class SMSMessageTest extends \PHPUnit_Framework_TestCase
         return [
             ['447528748500'],
             ['44752874850'],
-            ['353857025834']
+            ['353857025834'],
         ];
     }
 
@@ -51,7 +57,7 @@ class SMSMessageTest extends \PHPUnit_Framework_TestCase
             ['444752874850000'],
             ['60999'],
             [[]],
-            [new stdClass]
+            [new stdClass()],
         ];
     }
 
@@ -69,7 +75,7 @@ class SMSMessageTest extends \PHPUnit_Framework_TestCase
      */
     public function testValidIdReturnsSMSMessageObject($input)
     {
-        $this->assertInstanceOf('MessageCloud\Gateway\SMSMessage', $this->objMessage->id($input));
+        $this->assertInstanceOf(SMSMessage::class, $this->objMessage->id($input));
     }
 
     public function providerForValidId()
@@ -79,7 +85,7 @@ class SMSMessageTest extends \PHPUnit_Framework_TestCase
             ['12345'],
             [md5('12345')],
             [sha1('12345')],
-            ['de305d54-75b4-431b-adb2-eb6b9e546014']
+            ['de305d54-75b4-431b-adb2-eb6b9e546014'],
         ];
     }
 
@@ -88,7 +94,7 @@ class SMSMessageTest extends \PHPUnit_Framework_TestCase
         return [
             [''],
             [[]],
-            [new stdClass]
+            [new stdClass()],
         ];
     }
 
@@ -106,7 +112,7 @@ class SMSMessageTest extends \PHPUnit_Framework_TestCase
      */
     public function testValidBodyReturnsSMSMessageObject($input)
     {
-        $this->assertInstanceOf('MessageCloud\Gateway\SMSMessage', $this->objMessage->body($input));
+        $this->assertInstanceOf(SMSMessage::class, $this->objMessage->body($input));
     }
 
     public function providerForValidBody()
@@ -114,7 +120,8 @@ class SMSMessageTest extends \PHPUnit_Framework_TestCase
         return [
             [''],
             ['Hello, world!'],
-            ['This is a long message that will represent a concatenated message for the sake of this unit test. Concatenated messages are normally over 160 characters long and are automatically handled by MessageCloud.']
+            ['This is a long message that will represent a concatenated message for the sake of this unit test. 
+            Concatenated messages are normally over 160 characters long and are automatically handled by MessageCloud.'],
         ];
     }
 
@@ -122,7 +129,7 @@ class SMSMessageTest extends \PHPUnit_Framework_TestCase
     {
         return [
             [[]],
-            [new stdClass]
+            [new stdClass()],
         ];
     }
 
@@ -140,7 +147,7 @@ class SMSMessageTest extends \PHPUnit_Framework_TestCase
      */
     public function testValidSenderIdReturnsSMSMessageObject($input)
     {
-        $this->assertInstanceOf('MessageCloud\Gateway\SMSMessage', $this->objMessage->senderId($input));
+        $this->assertInstanceOf(SMSMessage::class, $this->objMessage->senderId($input));
     }
 
     public function providerForValidSenderId()
@@ -148,7 +155,7 @@ class SMSMessageTest extends \PHPUnit_Framework_TestCase
         return [
             ['MessageCloud'],
             ['447528748500'],
-            ['07528748500']
+            ['07528748500'],
         ];
     }
 
@@ -160,7 +167,7 @@ class SMSMessageTest extends \PHPUnit_Framework_TestCase
             ['+447528748500'],
             ['00447528748500'],
             [[]],
-            [new stdClass]
+            [new stdClass()],
         ];
     }
 
@@ -178,7 +185,7 @@ class SMSMessageTest extends \PHPUnit_Framework_TestCase
      */
     public function testValidValueReturnsSMSMessageObject($input)
     {
-        $this->assertInstanceOf('MessageCloud\Gateway\SMSMessage', $this->objMessage->value($input));
+        $this->assertInstanceOf(SMSMessage::class, $this->objMessage->value($input));
     }
 
     public function providerForValidValue()
@@ -189,7 +196,7 @@ class SMSMessageTest extends \PHPUnit_Framework_TestCase
             [0],
             [10],
             [12.5],
-            [100]
+            [100],
         ];
     }
 
@@ -199,7 +206,7 @@ class SMSMessageTest extends \PHPUnit_Framework_TestCase
             [-1],
             ['-10'],
             [[]],
-            [new stdClass]
+            [new stdClass()],
         ];
     }
 
@@ -213,7 +220,7 @@ class SMSMessageTest extends \PHPUnit_Framework_TestCase
 
     public function testNetworkReturnsSMSMessageObject()
     {
-        $this->assertInstanceOf('MessageCloud\Gateway\SMSMessage', $this->objMessage->network('international'));
+        $this->assertInstanceOf(SMSMessage::class, $this->objMessage->network('international'));
     }
 
     /**

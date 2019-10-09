@@ -1,19 +1,21 @@
 <?php
 
+declare(strict_types=1);
+
 namespace MessageCloud\Gateway;
 
-use Monolog\Logger;
 use MessageCloud\Gateway\Exceptions\SMSMessageException;
+use Monolog\Logger;
 use Respect\Validation\Validator;
 
 class SMSMessage extends Request
 {
-    const LOGGING = 'logging';
+    public const LOGGING = 'logging';
 
-    const DEFAULT_FREE_NETWORK = 'INTERNATIONAL';
-    const DEFAULT_CURRENCY = 'GBP';
-    const DEFAULT_VALUE = 0.00;
-    const DEFAULT_REPLY = 0;
+    public const DEFAULT_FREE_NETWORK = 'INTERNATIONAL';
+    public const DEFAULT_CURRENCY = 'GBP';
+    public const DEFAULT_VALUE = 0.00;
+    public const DEFAULT_REPLY = 0;
 
     protected $strUsername = null;
     protected $strPassword = null;
@@ -31,7 +33,7 @@ class SMSMessage extends Request
     protected $strUdh = null;
 
     protected $arrOptions = [
-        self::LOGGING => true
+        self::LOGGING => true,
     ];
 
     public function __construct($strUsername, $strPassword, $arrOptions = [])
@@ -53,9 +55,9 @@ class SMSMessage extends Request
     public function msisdn($strMsisdn)
     {
         if (!(Validator::numeric()->notEmpty()->length(10, 12)->not(Validator::startsWith('0'))->validate($strMsisdn))) {
-            $this->objLogger->addError('MSISDN must be a numeric string between 10 and 12 characters long in international format');
-
-            throw new SMSMessageException('MSISDN must be a numeric string between 10 and 12 characters long in international format');
+            $errorText = 'MSISDN must be a numeric string between 10 and 12 characters long in international format';
+            $this->objLogger->addError($errorText);
+            throw new SMSMessageException($errorText);
         }
 
         $this->strMsisdn = $strMsisdn;
@@ -236,7 +238,7 @@ class SMSMessage extends Request
             $this->objLogger->addWarning('No message was set on the outgoing message');
         }
 
-        if (0.0 === (float)$this->fltValue && is_null($this->strNetwork)) {
+        if (0.0 === (float) $this->fltValue && is_null($this->strNetwork)) {
             $this->objLogger->addDebug('Automatically setting the network to INTERNATIONAL for a 0 value message');
 
             $this->strNetwork = self::DEFAULT_FREE_NETWORK;

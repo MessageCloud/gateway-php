@@ -1,7 +1,11 @@
 <?php
 
+declare(strict_types=1);
+
 namespace MessageCloud\Gateway\Exceptions;
 
-class SMSMessageException extends \Exception
+use Exception;
+
+class SMSMessageException extends Exception
 {
 }
