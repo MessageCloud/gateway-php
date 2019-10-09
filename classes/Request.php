@@ -1,21 +1,22 @@
 <?php
 
+declare(strict_types=1);
+
 namespace MessageCloud\Gateway;
 
-use Monolog\Logger;
-use Monolog\Handler\RotatingFileHandler;
 use GuzzleHttp\Client;
 use GuzzleHttp\RequestOptions;
-use Ramsey\Uuid\Uuid;
-use Ramsey\Uuid\Exception\UnsatisfiedDependencyException;
 use MessageCloud\Gateway\Exceptions\SMSMessageException;
+use Monolog\Handler\RotatingFileHandler;
+use Monolog\Logger;
+use Ramsey\Uuid\Uuid;
 
 abstract class Request
 {
-    const GATEWAY_API_ENDPOINT = 'http://client.txtnation.com/gateway.php';
+    public const GATEWAY_API_ENDPOINT = 'http://client.txtnation.com/gateway.php';
 
-    const DEFAULT_LOG_LOCATION = '../logs/messages.txt';
-    const DEFAULT_MAX_LOG_FILES = 7;
+    public const DEFAULT_LOG_LOCATION = '../logs/messages.txt';
+    public const DEFAULT_MAX_LOG_FILES = 7;
 
     protected $objLogger = null;
 
@@ -23,7 +24,11 @@ abstract class Request
 
     public function startLogging()
     {
-        $this->objLogger->pushHandler(new RotatingFileHandler(self::DEFAULT_LOG_LOCATION, self::DEFAULT_MAX_LOG_FILES, Logger::WARNING));
+        $this->objLogger->pushHandler(new RotatingFileHandler(
+            self::DEFAULT_LOG_LOCATION,
+            self::DEFAULT_MAX_LOG_FILES,
+            Logger::WARNING
+        ));
     }
 
     public function send()
@@ -48,7 +53,7 @@ abstract class Request
             'encoding' => $this->strEncoding,
             'number' => $this->strMsisdn,
             'id' => $this->strId,
-            'reply' => $this->intReply
+            'reply' => $this->intReply,
         ];
 
         if ($this->blBinary) {
@@ -71,9 +76,9 @@ abstract class Request
             RequestOptions::SYNCHRONOUS => true,
             RequestOptions::ALLOW_REDIRECTS => true,
             RequestOptions::HEADERS => [
-                'User-agent' => 'MessageCloudGatewayLibraryPHP/1.0'
+                'User-agent' => 'MessageCloudGatewayLibraryPHP/1.0',
             ],
-            RequestOptions::HTTP_ERRORS => false
+            RequestOptions::HTTP_ERRORS => false,
         ]);
 
         $objResult = new SMSMessageResult($objResponse);

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace MessageCloud\Gateway;
 
 use Psr\Http\Message\ResponseInterface;
@@ -12,40 +14,41 @@ class SMSMessageResult extends Result
     protected $strId;
 
     // a few error codes
-    const ERROR_NO_CREDITS = 'NO CREDITS';
-    const ERROR_BARRED = 'BARRED';
+    public const ERROR_NO_CREDITS = 'NO CREDITS';
+    public const ERROR_BARRED = 'BARRED';
 
-    const ERROR_IR_101 = 'IR-101';
-    const ERROR_IR_102 = 'IR-102';
-    const ERROR_IR_103 = 'IR-103';
-    const ERROR_IR_104 = 'IR-104';
+    public const ERROR_IR_101 = 'IR-101';
+    public const ERROR_IR_102 = 'IR-102';
+    public const ERROR_IR_103 = 'IR-103';
+    public const ERROR_IR_104 = 'IR-104';
 
-    const ERROR_IR_401 = 'IR-401';
-    const ERROR_IR_403 = 'IR-403';
-    const ERROR_IR_404 = 'IR-404';
-    const ERROR_IR_405 = 'IR-405';
-    const ERROR_IR_409 = 'IR-409';
-    const ERROR_IR_410 = 'IR-410';
-    const ERROR_IR_412 = 'IR-412';
-    const ERROR_IR_413 = 'IR-413';
-    const ERROR_IR_414 = 'IR-414';
-    const ERROR_IR_415 = 'IR-415';
-    const ERROR_IR_416 = 'IR-416';
-    const ERROR_IR_417 = 'IR-417';
-    const ERROR_IR_418 = 'IR-418';
-    const ERROR_IR_419 = 'IR-419';
-    const ERROR_IR_420 = 'IR-420';
+    public const ERROR_IR_401 = 'IR-401';
+    public const ERROR_IR_403 = 'IR-403';
+    public const ERROR_IR_404 = 'IR-404';
+    public const ERROR_IR_405 = 'IR-405';
+    public const ERROR_IR_409 = 'IR-409';
+    public const ERROR_IR_410 = 'IR-410';
+    public const ERROR_IR_412 = 'IR-412';
+    public const ERROR_IR_413 = 'IR-413';
+    public const ERROR_IR_414 = 'IR-414';
+    public const ERROR_IR_415 = 'IR-415';
+    public const ERROR_IR_416 = 'IR-416';
+    public const ERROR_IR_417 = 'IR-417';
+    public const ERROR_IR_418 = 'IR-418';
+    public const ERROR_IR_419 = 'IR-419';
+    public const ERROR_IR_420 = 'IR-420';
 
-    const ERROR_E_100 = 'E-100';
-    const ERROR_E_101 = 'E-101';
-    const ERROR_E_102 = 'E-102';
-    const ERROR_E_103 = 'E-103';
-    const ERROR_E_105 = 'E-105';
-    const ERROR_E_107 = 'E-107';
-    const ERROR_E_108 = 'E-108';
-    const ERROR_E_109 = 'E-109';
+    public const ERROR_E_100 = 'E-100';
+    public const ERROR_E_101 = 'E-101';
+    public const ERROR_E_102 = 'E-102';
+    public const ERROR_E_103 = 'E-103';
+    public const ERROR_E_105 = 'E-105';
+    public const ERROR_E_107 = 'E-107';
+    public const ERROR_E_108 = 'E-108';
+    public const ERROR_E_109 = 'E-109';
 
-    const ERROR_UNKNOWN = 'Unrecognised error code returned. Please contact MessageCloud Support at help@messagecloud.com for more assistance.';
+    // phpcs:disable Generic.Files.LineLength.MaxExceeded
+    public const ERROR_UNKNOWN = 'Unrecognised error code returned. Please contact MessageCloud Support at help@messagecloud.com for more assistance.';
 
 
     // how the error codes translate into real person speak
@@ -80,8 +83,9 @@ class SMSMessageResult extends Result
         self::ERROR_E_105 => 'Invalid Operator ID.',
         self::ERROR_E_107 => 'Invalid Test. Please review your settings.',
         self::ERROR_E_108 => 'Sending failed as you have no credits remaining on your account.',
-        self::ERROR_E_109 => 'Sending through your account via MessageCloud is currently disabled in this country.'
+        self::ERROR_E_109 => 'Sending through your account via MessageCloud is currently disabled in this country.',
     ];
+    // phpcs:enable
 
     protected $objResult;
 
@@ -115,6 +119,8 @@ class SMSMessageResult extends Result
 
     public function getErrorMessage()
     {
-        return (!empty($this->arrErrorMessages[$this->strErrorCode])) ? $this->arrErrorMessages[$this->strErrorCode] : self::ERROR_UNKNOWN;
+        return !empty($this->arrErrorMessages[$this->strErrorCode])
+            ? $this->arrErrorMessages[$this->strErrorCode]
+            : self::ERROR_UNKNOWN;
     }
 }
