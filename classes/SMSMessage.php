@@ -17,21 +17,6 @@ class SMSMessage extends Request
     public const DEFAULT_VALUE = 0.00;
     public const DEFAULT_REPLY = 0;
 
-    protected $strUsername = null;
-    protected $strPassword = null;
-    protected $strMsisdn = null;
-    protected $strBody = null;
-    protected $strSenderId = null;
-    protected $strId = null;
-    protected $strNetwork = null;
-    protected $fltValue = null;
-    protected $strCurrency = null;
-    protected $intReply = null;
-    protected $intCategory = null;
-    protected $strEncoding = null;
-    protected $blBinary = null;
-    protected $strUdh = null;
-
     protected $arrOptions = [
         self::LOGGING => true,
     ];
@@ -159,7 +144,7 @@ class SMSMessage extends Request
 
     public function reply($intReply)
     {
-        if (!(Validator::IntType()->between(0, 1)->validate($intReply))) {
+        if (!(Validator::intType()->between(0, 1)->validate($intReply))) {
             $this->objLogger->addError('Reply must be 1 or 0');
 
             throw new SMSMessageException('Reply must be 1 or 0');
