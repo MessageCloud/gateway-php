@@ -11,7 +11,7 @@ abstract class Result
 
     public function success()
     {
-        return ((200 === $this->objResult->getStatusCode())
+        return (200 === $this->objResult->getStatusCode()
             && ($this->strSuccess === (string) $this->objResult->getBody()));
     }
 
