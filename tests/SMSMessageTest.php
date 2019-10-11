@@ -5,19 +5,19 @@ declare(strict_types=1);
 namespace MessageCloudTest\Gateway;
 
 use MessageCloud\Gateway\SMSMessage;
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 use stdClass;
 
-class SMSMessageTest extends PHPUnit_Framework_TestCase
+class SMSMessageTest extends TestCase
 {
     private $objMessage;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->objMessage = new SMSMessage('Marc', 'test');
     }
 
-    public function tearDown()
+    public function tearDown(): void
     {
         unset($this->objMessage);
     }

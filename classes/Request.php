@@ -20,6 +20,21 @@ abstract class Request
 
     protected $objLogger = null;
 
+    protected $strUsername = null;
+    protected $strPassword = null;
+    protected $strMsisdn = null;
+    protected $strBody = null;
+    protected $strSenderId = null;
+    protected $strId = null;
+    protected $strNetwork = null;
+    protected $fltValue = null;
+    protected $strCurrency = null;
+    protected $intReply = null;
+    protected $intCategory = null;
+    protected $strEncoding = null;
+    protected $blBinary = null;
+    protected $strUdh = null;
+
     abstract protected function validate();
 
     public function startLogging()

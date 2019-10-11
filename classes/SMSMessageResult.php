@@ -87,8 +87,6 @@ class SMSMessageResult extends Result
     ];
     // phpcs:enable
 
-    protected $objResult;
-
     protected $strErrorCode = self::ERROR_UNKNOWN;
 
     public function __construct(ResponseInterface $objResult)

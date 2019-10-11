@@ -4,15 +4,14 @@ declare(strict_types=1);
 
 namespace MessageCloud\Gateway;
 
-use Teapot\StatusCode;
-
 abstract class Result
 {
+    protected $objResult;
     protected $strSuccess = 'OK';
 
     public function success()
     {
-        return ((StatusCode::OK === $this->objResult->getStatusCode())
+        return ((200 === $this->objResult->getStatusCode())
             && ($this->strSuccess === (string) $this->objResult->getBody()));
     }
 
