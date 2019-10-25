@@ -7,8 +7,7 @@ namespace MessageCloud\Gateway;
 use GuzzleHttp\Client;
 use GuzzleHttp\RequestOptions;
 use MessageCloud\Gateway\Exceptions\SMSMessageException;
-use Monolog\Handler\RotatingFileHandler;
-use Monolog\Logger;
+use Psr\Log\LoggerInterface;
 use Ramsey\Uuid\Uuid;
 
 abstract class Request
@@ -18,7 +17,10 @@ abstract class Request
     public const DEFAULT_LOG_LOCATION = '../logs/messages.txt';
     public const DEFAULT_MAX_LOG_FILES = 7;
 
-    protected $objLogger = null;
+    /**
+     * @var LoggerInterface
+     */
+    protected $objLogger;
 
     protected $strUsername = null;
     protected $strPassword = null;
@@ -37,13 +39,9 @@ abstract class Request
 
     abstract protected function validate();
 
-    public function startLogging()
+    public function setLogger(LoggerInterface $logger): void
     {
-        $this->objLogger->pushHandler(new RotatingFileHandler(
-            self::DEFAULT_LOG_LOCATION,
-            self::DEFAULT_MAX_LOG_FILES,
-            Logger::WARNING
-        ));
+        $this->objLogger = $logger;
     }
 
     public function send()
@@ -80,7 +78,7 @@ abstract class Request
             $arrParams['smscat'] = $this->intCategory;
         }
 
-        $this->objLogger->addDebug('Sending the following to MessageCloud:', $arrParams);
+        $this->objLogger->debug('Sending the following to MessageCloud:', $arrParams);
 
         $objClient = new Client([
             'base_uri' => 'http://client.txtnation.com/', 'timeout'  => 10.0,
@@ -100,7 +98,7 @@ abstract class Request
         $objResult->setCallbackId($this->strId);
 
         if (!$objResult->success()) {
-            $this->objLogger->addAlert('Message was not sent. ', ['error' => $objResult->getErrorMessage()]);
+            $this->objLogger->alert('Message was not sent. ', ['error' => $objResult->getErrorMessage()]);
         }
 
         return $objResult;
