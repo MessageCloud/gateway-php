@@ -21,7 +21,7 @@
 		"php": ">=7.2",
 		"ext-curl": "*",
 		"ext-mbstring": "*",
-		"monolog/monolog": "^1.13",
+		"monolog/monolog": "^2.0",
 		"guzzlehttp/guzzle": "^6.2",
 		"respect/validation": "^1.0",
 		"ramsey/uuid": "^3.3"
