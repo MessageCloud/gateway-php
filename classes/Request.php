@@ -104,11 +104,9 @@ abstract class Request
 
     private function generateRandomString($length = 36)
     {
-        $letters = 'abcdef';
-        $lettersLength = strlen($letters);
         $characters = '0123456789abcdef';
         $charactersLength = strlen($characters);
-        $randomString = $letters[rand(0, $lettersLength - 1)];
+        $randomString = '';
         for ($i = 1; $i < $length; $i++) {
             $randomString .= $characters[rand(0, $charactersLength - 1)];
         }
