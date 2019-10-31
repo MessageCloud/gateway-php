@@ -9,7 +9,7 @@ abstract class Result
     protected $objResult;
     protected $strSuccess = 'OK';
 
-    public function success()
+    public function success(): bool
     {
         return (200 === $this->objResult->getStatusCode()
             && ($this->strSuccess === (string) $this->objResult->getBody()));
