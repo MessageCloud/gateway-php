@@ -38,7 +38,7 @@ class SMSMessage extends Request
         $this->objLogger->debug('Message object constructed');
     }
 
-    public function msisdn($strMsisdn)
+    public function msisdn($strMsisdn): self
     {
         if (!(Validator::numeric()->notEmpty()->length(10, 12)->not(Validator::startsWith('0'))->validate($strMsisdn))) {
             $errorText = 'MSISDN must be a numeric string between 10 and 12 characters long in international format';
@@ -53,7 +53,7 @@ class SMSMessage extends Request
         return $this;
     }
 
-    public function id($strId)
+    public function id($strId): self
     {
         if (!(Validator::stringType()->notEmpty()->validate($strId))) {
             $this->objLogger->error('ID must be a string');
@@ -68,7 +68,7 @@ class SMSMessage extends Request
         return $this;
     }
 
-    public function body($strBody)
+    public function body($strBody): self
     {
         if (!(Validator::stringType()->validate($strBody))) {
             $this->objLogger->error('Message body must be a string');
@@ -83,7 +83,7 @@ class SMSMessage extends Request
         return $this;
     }
 
-    public function senderId($strSenderId)
+    public function senderId($strSenderId): self
     {
         if (!(Validator::stringType()->notEmpty()->length(1, 12)->validate($strSenderId))) {
             $this->objLogger->error('SenderId must be a string between 1 and 12 characters long');
@@ -98,7 +98,7 @@ class SMSMessage extends Request
         return $this;
     }
 
-    public function network($strNetwork)
+    public function network($strNetwork): self
     {
         if (!(Validator::stringType()->notEmpty()->length(1, 50)->validate($strNetwork))) {
             $this->objLogger->error('Network must be a string');
@@ -113,7 +113,7 @@ class SMSMessage extends Request
         return $this;
     }
 
-    public function value($fltValue)
+    public function value($fltValue): self
     {
         if (!(Validator::floatVal()->min(0, true)->validate($fltValue))) {
             $this->objLogger->error('Value must be a floating point number');
@@ -128,7 +128,7 @@ class SMSMessage extends Request
         return $this;
     }
 
-    public function currency($strCurrency)
+    public function currency($strCurrency): self
     {
         if (!(Validator::stringType()->notEmpty()->length(3, 3)->validate($strCurrency))) {
             $this->objLogger->error('Currency should be in ISO 4217 standard, e.g. USD, EUR, GBP');
@@ -143,7 +143,7 @@ class SMSMessage extends Request
         return $this;
     }
 
-    public function reply($intReply)
+    public function reply($intReply): self
     {
         if (!(Validator::intType()->between(0, 1)->validate($intReply))) {
             $this->objLogger->error('Reply must be 1 or 0');
@@ -158,7 +158,7 @@ class SMSMessage extends Request
         return $this;
     }
 
-    public function udh($strUdh)
+    public function udh($strUdh): self
     {
         if (!(Validator::stringType()->notEmpty()->length(1, 255)->validate($strUdh))) {
             $this->objLogger->error('UDH must be a string');
@@ -174,7 +174,7 @@ class SMSMessage extends Request
         return $this;
     }
 
-    public function binary($blBinary)
+    public function binary($blBinary): self
     {
         if (!(Validator::boolType()->validate($blBinary))) {
             $this->objLogger->error('Binary must be TRUE or FALSE');
@@ -189,7 +189,7 @@ class SMSMessage extends Request
         return $this;
     }
 
-    public function category($intCategory)
+    public function category($intCategory): self
     {
         if (!(Validator::numeric()->notEmpty()->length(3, 3)->validate($intCategory))) {
             $this->objLogger->error('Category must be a numeric string with a length of 3.');
@@ -204,7 +204,7 @@ class SMSMessage extends Request
         return $this;
     }
 
-    protected function validate()
+    protected function validate(): bool
     {
         $this->objLogger->debug('Validating the request');
 
