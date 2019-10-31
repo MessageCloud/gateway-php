@@ -8,7 +8,6 @@ use GuzzleHttp\Client;
 use GuzzleHttp\RequestOptions;
 use MessageCloud\Gateway\Exceptions\SMSMessageException;
 use Psr\Log\LoggerInterface;
-use Ramsey\Uuid\Uuid;
 
 abstract class Request
 {
@@ -51,8 +50,7 @@ abstract class Request
         }
 
         if (empty($this->strId)) {
-            $objUuid = Uuid::uuid4();
-            $this->strId = $objUuid->toString();
+            $this->strId = $this->generateRandomString();
         }
 
         $arrParams = [
@@ -102,5 +100,18 @@ abstract class Request
         }
 
         return $objResult;
+    }
+
+    private function generateRandomString($length = 36)
+    {
+        $letters = 'abcdef';
+        $lettersLength = strlen($letters);
+        $characters = '0123456789abcdef';
+        $charactersLength = strlen($characters);
+        $randomString = $letters[rand(0, $lettersLength - 1)];
+        for ($i = 1; $i < $length; $i++) {
+            $randomString .= $characters[rand(0, $charactersLength - 1)];
+        }
+        return $randomString;
     }
 }
