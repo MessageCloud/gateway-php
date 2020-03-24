@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace MessageCloudTest\Gateway;
 
+use MessageCloud\Gateway\Exceptions\SMSMessageException;
 use MessageCloud\Gateway\SMSMessage;
 use PHPUnit\Framework\TestCase;
 use stdClass;
@@ -24,10 +25,10 @@ class SMSMessageTest extends TestCase
 
     /**
      * @dataProvider providerForBadMsisdn
-     * @expectedException MessageCloud\Gateway\Exceptions\SMSMessageException
      */
     public function testBadMsisdnThrowsException($input)
     {
+        $this->expectException(SMSMessageException::class);
         $this->objMessage->msisdn($input);
     }
 
@@ -63,10 +64,10 @@ class SMSMessageTest extends TestCase
 
     /**
      * @dataProvider providerForBadId
-     * @expectedException MessageCloud\Gateway\Exceptions\SMSMessageException
      */
     public function testBadIdThrowsException($input)
     {
+        $this->expectException(SMSMessageException::class);
         $this->objMessage->id($input);
     }
 
@@ -100,10 +101,10 @@ class SMSMessageTest extends TestCase
 
     /**
      * @dataProvider providerForBadBody
-     * @expectedException MessageCloud\Gateway\Exceptions\SMSMessageException
      */
     public function testBadBodyThrowsException($input)
     {
+        $this->expectException(SMSMessageException::class);
         $this->objMessage->body($input);
     }
 
@@ -135,10 +136,10 @@ class SMSMessageTest extends TestCase
 
     /**
      * @dataProvider providerForBadSenderId
-     * @expectedException MessageCloud\Gateway\Exceptions\SMSMessageException
      */
     public function testBadSenderIdThrowsException($input)
     {
+        $this->expectException(SMSMessageException::class);
         $this->objMessage->senderId($input);
     }
 
@@ -173,10 +174,10 @@ class SMSMessageTest extends TestCase
 
     /**
      * @dataProvider providerForBadValue
-     * @expectedException MessageCloud\Gateway\Exceptions\SMSMessageException
      */
     public function testBadValueThrowsException($input)
     {
+        $this->expectException(SMSMessageException::class);
         $this->objMessage->value($input);
     }
 
@@ -210,11 +211,9 @@ class SMSMessageTest extends TestCase
         ];
     }
 
-    /**
-     * @expectedException MessageCloud\Gateway\Exceptions\SMSMessageException
-     */
     public function testNetworkTooLong()
     {
+        $this->expectException(SMSMessageException::class);
         $this->objMessage->network('myverylongnetworknamethatwontworkifwesendtotxtnation');
     }
 
@@ -223,11 +222,9 @@ class SMSMessageTest extends TestCase
         $this->assertInstanceOf(SMSMessage::class, $this->objMessage->network('international'));
     }
 
-    /**
-     * @expectedException MessageCloud\Gateway\Exceptions\SMSMessageException
-     */
     public function testInternationalMessageHasValue()
     {
+        $this->expectException(SMSMessageException::class);
         $this->objMessage->network('international')->value(1.00)->send();
     }
 }
