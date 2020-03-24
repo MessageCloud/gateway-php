@@ -24,7 +24,7 @@
 		"ext-mbstring": "*",
 		"guzzlehttp/guzzle": "^6.2",
 		"respect/validation": "^1.0",
-		"ramsey/uuid": "^3.3",
+		"ramsey/uuid": "^4.0",
 		"psr/log": "^1.1"
 	},
 	"require-dev":{
