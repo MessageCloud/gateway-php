@@ -23,7 +23,7 @@
 		"ext-curl": "*",
 		"ext-mbstring": "*",
 		"guzzlehttp/guzzle": "^6.2",
-		"respect/validation": "^1.0",
+		"respect/validation": "^2.0",
 		"ramsey/uuid": "^4.0",
 		"psr/log": "^1.1"
 	},
