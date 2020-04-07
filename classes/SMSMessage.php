@@ -40,7 +40,7 @@ class SMSMessage extends Request
 
     public function msisdn($strMsisdn): self
     {
-        if (!(Validator::numeric()->notEmpty()->length(10, 12)->not(Validator::startsWith('0'))->validate($strMsisdn))) {
+        if (!(Validator::numericVal()->notEmpty()->length(10, 12)->not(Validator::startsWith('0'))->validate($strMsisdn))) {
             $errorText = 'MSISDN must be a numeric string between 10 and 12 characters long in international format';
             $this->objLogger->error($errorText);
             throw new SMSMessageException($errorText);
