@@ -577,16 +577,16 @@
         },
         {
             "name": "respect/validation",
-            "version": "2.0.10",
+            "version": "2.0.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Respect/Validation.git",
-                "reference": "80f236bb900e5bc5e790737a31806f4d10c560ba"
+                "reference": "0a3f4c6a4beb5301ed652424a27941705ee427b0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Respect/Validation/zipball/80f236bb900e5bc5e790737a31806f4d10c560ba",
-                "reference": "80f236bb900e5bc5e790737a31806f4d10c560ba",
+                "url": "https://api.github.com/repos/Respect/Validation/zipball/0a3f4c6a4beb5301ed652424a27941705ee427b0",
+                "reference": "0a3f4c6a4beb5301ed652424a27941705ee427b0",
                 "shasum": ""
             },
             "require": {
@@ -639,7 +639,7 @@
                 "validation",
                 "validator"
             ],
-            "time": "2020-06-07T00:14:45+00:00"
+            "time": "2020-07-14T19:02:53+00:00"
         },
         {
             "name": "symfony/polyfill-ctype",
@@ -795,16 +795,16 @@
         },
         {
             "name": "symfony/polyfill-mbstring",
-            "version": "v1.17.0",
+            "version": "v1.18.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-mbstring.git",
-                "reference": "fa79b11539418b02fc5e1897267673ba2c19419c"
+                "reference": "a6977d63bf9a0ad4c65cd352709e230876f9904a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/fa79b11539418b02fc5e1897267673ba2c19419c",
-                "reference": "fa79b11539418b02fc5e1897267673ba2c19419c",
+                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/a6977d63bf9a0ad4c65cd352709e230876f9904a",
+                "reference": "a6977d63bf9a0ad4c65cd352709e230876f9904a",
                 "shasum": ""
             },
             "require": {
@@ -816,7 +816,11 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.17-dev"
+                    "dev-master": "1.18-dev"
+                },
+                "thanks": {
+                    "name": "symfony/polyfill",
+                    "url": "https://github.com/symfony/polyfill"
                 }
             },
             "autoload": {
@@ -864,7 +868,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-05-12T16:47:27+00:00"
+            "time": "2020-07-14T12:35:20+00:00"
         },
         {
             "name": "symfony/polyfill-php72",
