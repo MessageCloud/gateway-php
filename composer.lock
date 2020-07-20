@@ -577,16 +577,16 @@
         },
         {
             "name": "respect/validation",
-            "version": "2.0.12",
+            "version": "2.0.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Respect/Validation.git",
-                "reference": "0a3f4c6a4beb5301ed652424a27941705ee427b0"
+                "reference": "78d1ce404cee8a25e2577ee5b829ee88e7ea1e4a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Respect/Validation/zipball/0a3f4c6a4beb5301ed652424a27941705ee427b0",
-                "reference": "0a3f4c6a4beb5301ed652424a27941705ee427b0",
+                "url": "https://api.github.com/repos/Respect/Validation/zipball/78d1ce404cee8a25e2577ee5b829ee88e7ea1e4a",
+                "reference": "78d1ce404cee8a25e2577ee5b829ee88e7ea1e4a",
                 "shasum": ""
             },
             "require": {
@@ -639,7 +639,7 @@
                 "validation",
                 "validator"
             ],
-            "time": "2020-07-14T19:02:53+00:00"
+            "time": "2020-07-19T00:20:19+00:00"
         },
         {
             "name": "symfony/polyfill-ctype",
