@@ -577,16 +577,16 @@
         },
         {
             "name": "respect/validation",
-            "version": "2.0.13",
+            "version": "2.0.15",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Respect/Validation.git",
-                "reference": "78d1ce404cee8a25e2577ee5b829ee88e7ea1e4a"
+                "reference": "44d0af414874b2f01c060795ba2266efb330e3f1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Respect/Validation/zipball/78d1ce404cee8a25e2577ee5b829ee88e7ea1e4a",
-                "reference": "78d1ce404cee8a25e2577ee5b829ee88e7ea1e4a",
+                "url": "https://api.github.com/repos/Respect/Validation/zipball/44d0af414874b2f01c060795ba2266efb330e3f1",
+                "reference": "44d0af414874b2f01c060795ba2266efb330e3f1",
                 "shasum": ""
             },
             "require": {
@@ -595,7 +595,6 @@
                 "symfony/polyfill-mbstring": "^1.2"
             },
             "require-dev": {
-                "dealerdirect/phpcodesniffer-composer-installer": "^0.5.0",
                 "egulias/email-validator": "^2.1",
                 "malukenho/docheader": "^0.1",
                 "mikey179/vfsstream": "^1.6",
@@ -603,7 +602,7 @@
                 "phpstan/phpstan-deprecation-rules": "^0.11.0",
                 "phpstan/phpstan-phpunit": "^0.11.0",
                 "phpunit/phpunit": "^7.5",
-                "respect/coding-standard": "^1.0",
+                "respect/coding-standard": "^2.1",
                 "squizlabs/php_codesniffer": "^3.5",
                 "symfony/validator": "^3.0||^4.0",
                 "zendframework/zend-validator": "^2.1"
@@ -639,7 +638,7 @@
                 "validation",
                 "validator"
             ],
-            "time": "2020-07-19T00:20:19+00:00"
+            "time": "2020-07-21T21:09:18+00:00"
         },
         {
             "name": "symfony/polyfill-ctype",
