@@ -592,16 +592,16 @@
         },
         {
             "name": "respect/validation",
-            "version": "2.0.16",
+            "version": "2.0.17",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Respect/Validation.git",
-                "reference": "fc14c6c6695c3f870ad8810a2acddccec015841d"
+                "reference": "314aa36e37dd3812b7d80c7bda3e83da5ee22d11"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Respect/Validation/zipball/fc14c6c6695c3f870ad8810a2acddccec015841d",
-                "reference": "fc14c6c6695c3f870ad8810a2acddccec015841d",
+                "url": "https://api.github.com/repos/Respect/Validation/zipball/314aa36e37dd3812b7d80c7bda3e83da5ee22d11",
+                "reference": "314aa36e37dd3812b7d80c7bda3e83da5ee22d11",
                 "shasum": ""
             },
             "require": {
@@ -613,9 +613,9 @@
                 "egulias/email-validator": "^2.1",
                 "malukenho/docheader": "^0.1",
                 "mikey179/vfsstream": "^1.6",
-                "phpstan/phpstan": "^0.11",
-                "phpstan/phpstan-deprecation-rules": "^0.11.0",
-                "phpstan/phpstan-phpunit": "^0.11.0",
+                "phpstan/phpstan": "^0.12",
+                "phpstan/phpstan-deprecation-rules": "^0.12",
+                "phpstan/phpstan-phpunit": "^0.12",
                 "phpunit/phpunit": "^7.5",
                 "respect/coding-standard": "^2.1",
                 "squizlabs/php_codesniffer": "^3.5",
@@ -653,7 +653,7 @@
                 "validation",
                 "validator"
             ],
-            "time": "2020-07-25T18:34:16+00:00"
+            "time": "2020-08-23T00:24:43+00:00"
         },
         {
             "name": "symfony/polyfill-ctype",
@@ -809,7 +809,7 @@
         },
         {
             "name": "symfony/polyfill-mbstring",
-            "version": "v1.18.0",
+            "version": "v1.18.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-mbstring.git",
