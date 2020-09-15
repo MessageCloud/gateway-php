@@ -1,0 +1,12 @@
+version: 2
+updates:
+- package-ecosystem: composer
+  directory: "/"
+  schedule:
+    interval: weekly
+    time: "09:00"
+  open-pull-requests-limit: 10
+  reviewers:
+  - marcoleary
+  assignees:
+  - marcoleary
